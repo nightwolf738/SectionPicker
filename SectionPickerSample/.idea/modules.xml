@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SectionPickerSample.iml" filepath="$PROJECT_DIR$/SectionPickerSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/sectionpicker/sectionpicker.iml" filepath="$PROJECT_DIR$/sectionpicker/sectionpicker.iml" />
     </modules>
   </component>
