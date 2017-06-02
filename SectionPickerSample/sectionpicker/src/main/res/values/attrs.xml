@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SectionPicker">
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="color" />
+        <attr name="chosenColor" format="color" />
+        <attr name="indicatorEnabled" format="boolean" />
+    </declare-styleable>
+</resources>
