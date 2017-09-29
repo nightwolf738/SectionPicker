@@ -20,16 +20,22 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        app:chosenColor="@android:color/holo_red_dark"
+        app:chosenStyle="bold"
         app:textColor="@android:color/black"
         app:textSize="12sp" />
 
     <TextView
         android:id="@+id/textview_section"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
+        android:background="@drawable/shape_indicator_background"
+        android:gravity="center"
+        android:textColor="@android:color/white"
         android:textSize="50sp"
         android:visibility="gone"
-        tool:text="A" />
+        tool:text="A"
+        tool:visibility="visible" />
 
 </RelativeLayout>
