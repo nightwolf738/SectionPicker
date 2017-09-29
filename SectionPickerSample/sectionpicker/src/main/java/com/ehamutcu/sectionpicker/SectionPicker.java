@@ -6,8 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,13 +47,13 @@ public class SectionPicker extends View {
         super(context);
     }
 
-    private void init(@Nullable AttributeSet attrs) {
+    private void init(AttributeSet attrs) {
         if (attrs != null) {
             setAttrs(attrs);
         }
     }
 
-    protected void setAttrs(@NonNull AttributeSet attrs) {
+    protected void setAttrs(AttributeSet attrs) {
         Context context = getContext();
 
         int textSize = AttrHelper.getFontSize(context, attrs, R.styleable.SectionPicker, R.styleable.SectionPicker_textSize);
@@ -169,21 +167,19 @@ public class SectionPicker extends View {
         this.sections = sections;
     }
 
-    @Nullable
     public ColorStateList getColor() {
         return color;
     }
 
-    public void setColor(@Nullable ColorStateList color) {
+    public void setColor(ColorStateList color) {
         this.color = color;
     }
 
-    @Nullable
     public ColorStateList getChosenColor() {
         return chosenColor;
     }
 
-    public void setChosenColor(@Nullable ColorStateList chosenColor) {
+    public void setChosenColor(ColorStateList chosenColor) {
         this.chosenColor = chosenColor;
     }
 
