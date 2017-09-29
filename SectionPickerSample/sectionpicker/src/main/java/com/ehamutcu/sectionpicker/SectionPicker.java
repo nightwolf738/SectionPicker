@@ -102,9 +102,7 @@ public class SectionPicker extends View {
 
     private void paintText(ColorStateList colorStateList, Typeface typeFace) {
         paint.setColor((colorStateList != null) ? colorStateList.getDefaultColor() : Color.BLACK);
-        if (typeFace != null) {
-            paint.setTypeface(typeFace);
-        }
+        paint.setTypeface((typeFace != null) ? typeFace : Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
     }
 
     @Override
