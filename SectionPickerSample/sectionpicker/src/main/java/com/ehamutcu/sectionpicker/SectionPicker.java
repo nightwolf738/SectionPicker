@@ -19,18 +19,19 @@ import com.ehamutcu.sectionpicker.helper.AttrHelper;
 
 public class SectionPicker extends View {
 
+    public String[] sections = {"A", "B", "C", "D", "E", "F", "G", "H", "I",
+            "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
+            "W", "X", "Y", "Z"};
     private TextView textViewIndicator;
-    private Typeface typeFace;
     private int fontSize;
     private ColorStateList color;
+    private Typeface typeFace;
     private ColorStateList chosenColor;
+    private Typeface chosenTypeFace;
     private boolean indicatorEnabled = true;
     private OnTouchingLetterChangedListener onTouchingLetterChangedListener;
     private int chosenIndex = -1;
     private Paint paint = new Paint();
-    public String[] sections = {"A", "B", "C", "D", "E", "F", "G", "H", "I",
-            "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
-            "W", "X", "Y", "Z"};
 
 
     public SectionPicker(Context context, AttributeSet attrs, int defStyle) {
@@ -62,8 +63,14 @@ public class SectionPicker extends View {
         ColorStateList color = AttrHelper.getFontColor(context, attrs, R.styleable.SectionPicker, R.styleable.SectionPicker_textColor);
         setColor(color);
 
+        int textStyle = AttrHelper.getFontStyle(context, attrs, R.styleable.SectionPicker, R.styleable.SectionPicker_textStyle);
+        setTypeFace(Typeface.create(Typeface.DEFAULT, textStyle));
+
         ColorStateList chosenColor = AttrHelper.getFontColor(context, attrs, R.styleable.SectionPicker, R.styleable.SectionPicker_chosenColor);
         setChosenColor(chosenColor);
+
+        int chosenStyle = AttrHelper.getFontStyle(context, attrs, R.styleable.SectionPicker, R.styleable.SectionPicker_chosenStyle);
+        setChosenTypeFace(Typeface.create(Typeface.DEFAULT, chosenStyle));
 
         boolean isIndicatorEnabled = AttrHelper.getIndicatorEnabled(context, attrs, R.styleable.SectionPicker, R.styleable.SectionPicker_indicatorEnabled);
         setIndicatorEnabled(isIndicatorEnabled);
@@ -76,16 +83,13 @@ public class SectionPicker extends View {
         int singleHeight = height / sections.length;
 
         for (int i = 0; i < sections.length; i++) {
-            paint.setColor((color != null) ? color.getDefaultColor() : Color.BLACK);
-            if (typeFace != null) {
-                paint.setTypeface(typeFace);
-            }
             paint.setAntiAlias(true);
             paint.setTextSize(fontSize);
 
             if (i == chosenIndex) {
-                paint.setColor((chosenColor != null) ? chosenColor.getDefaultColor() : Color.BLACK);
-                paint.setFakeBoldText(true);
+                paintText(chosenColor, chosenTypeFace);
+            } else {
+                paintText(color, typeFace);
             }
 
             float xPos = width / 2 - paint.measureText(sections[i]) / 2;
@@ -94,6 +98,13 @@ public class SectionPicker extends View {
             paint.reset();
         }
 
+    }
+
+    private void paintText(ColorStateList colorStateList, Typeface typeFace) {
+        paint.setColor((colorStateList != null) ? colorStateList.getDefaultColor() : Color.BLACK);
+        if (typeFace != null) {
+            paint.setTypeface(typeFace);
+        }
     }
 
     @Override
@@ -181,6 +192,14 @@ public class SectionPicker extends View {
 
     public void setChosenColor(ColorStateList chosenColor) {
         this.chosenColor = chosenColor;
+    }
+
+    public Typeface getChosenTypeFace() {
+        return chosenTypeFace;
+    }
+
+    public void setChosenTypeFace(Typeface chosenTypeFace) {
+        this.chosenTypeFace = chosenTypeFace;
     }
 
     public boolean isIndicatorEnabled() {

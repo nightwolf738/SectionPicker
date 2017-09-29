@@ -3,6 +3,7 @@ package com.ehamutcu.sectionpicker.helper;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 
 import com.ehamutcu.sectionpicker.util.DisplayUtil;
@@ -54,6 +55,29 @@ public class AttrHelper {
 
         try {
             return typedArray.getColorStateList(colorIndex);
+        } finally {
+            typedArray.recycle();
+        }
+    }
+
+    /**
+     * Gets the textSize attribute's value from the given attribute set
+     *
+     * @param context      a context
+     * @param attrs        attribute set of a view (e.g {@link com.ehamutcu.sectionpicker.SectionPicker})
+     * @param defStyleAttr (e.g R.styleable.SectionPicker)
+     * @param styleIndex   style index of the view (e.g R.styleable.SectionPicker_textStyle)
+     * @return one of {@link Typeface#NORMAL}, {@link Typeface#BOLD}, and {@link Typeface#ITALIC}
+     */
+    public static int getFontStyle(Context context, AttributeSet attrs, int defStyleAttr[], int styleIndex) {
+        TypedArray typedArray = context.obtainStyledAttributes(
+                attrs,
+                defStyleAttr,
+                0,
+                0);
+
+        try {
+            return typedArray.getInt(styleIndex, Typeface.NORMAL);
         } finally {
             typedArray.recycle();
         }
