@@ -26,7 +26,7 @@ dependencies {
 
 ## Usage
 
-Suppose we have a RecyclerView. We need to implement SectionIndexer in our RecyclerView.Adapter:
+Suppose we have a ```RecyclerView```. We need to implement ```SectionIndexer``` in our ```RecyclerView.Adapter```:
 
 ```java
 public class CountriesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements SectionIndexer {
@@ -106,8 +106,53 @@ public int getSectionForPosition(int position) {
 }
 ```
 
-- ```getSections()``` determines the section list which will show up at the right of the screen. Our sections are listed in ```countries``` with the view type ```TYPE_LETTER```.
+- ```getSections()``` determines the section list which will show up at the right of the screen. Our sections are listed in ```countries``` with the view type of ```TYPE_LETTER```.
 
 - ```getPositionForSection(int sectionIndex)``` returns position of the section in the list. It uses char values to determine the right position of the section
 
 - ```getSectionForPosition(int position)``` returns section position in the list. We need to find the right section by using position parameter
+
+We can add SectionPicker in our xml layout like this:
+
+```xml
+<com.ehamutcu.sectionpicker.SectionPicker
+        android:id="@+id/sectionpicker_countries"
+        android:layout_width="26dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:chosenColor="@android:color/holo_red_dark"
+        app:chosenStyle="bold"
+        app:textColor="@android:color/black"
+        app:textSize="12sp" />
+```
+
+```app``` attributes are optional:
+- ```textColor, textSize```: You can style text attributes with these
+- ```chosenColor, chosenStyle```: When you slide your finger on sections, the chosen one can be styled by these attributes
+
+Now we init the SectionPicker like this:
+
+```java
+private void initSectionPicker() {
+    Object[] sectionsAsObject = adapter.getSections();
+    String[] sections = Arrays.copyOf(sectionsAsObject, sectionsAsObject.length, String[].class);
+
+    sectionPickerCountries.setTextViewIndicator(textViewSection);
+    sectionPickerCountries.setSections(sections);
+    sectionPickerCountries.setOnTouchingLetterChangedListener(new SectionPicker.OnTouchingLetterChangedListener() {
+        @Override
+        public void onTouchingLetterChanged(String s) {
+            int position = adapter.getPositionForSection(s.charAt(0));
+
+            if (position != -1) {
+                linearLayoutManager.scrollToPositionWithOffset(position, 0);
+            }
+        }
+    });
+}
+```
+
+You may be confused of ```setTextViewIndicator(textViewSection)```. This method is optional. You can add any ```TextView``` to the ```SectionPicker```. It will show up when you slide your finger on sections. Please see demo.
+
+To bind ```SectionPicker``` and ```RecyclerView``` we get the section array from adapter, and call ```setSections(sections)``` in ```SectionPicker```. That's it.
