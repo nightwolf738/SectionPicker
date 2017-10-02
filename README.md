@@ -157,7 +157,7 @@ You may be confused of ```setTextViewIndicator(textViewSection)```. This method 
 
 To bind ```SectionPicker``` and ```RecyclerView``` we get the section array from adapter, and call ```setSections(sections)``` in ```SectionPicker```.
 
-To enable fast scroll we need to implement ```SectionPicker.OnTouchingLetterChangedListener()```. It will give us a string containing the section that we are touching. We will use the string to find and scroll to the RecyclerView position of the chosen section.
+To enable fast scroll we need to implement ```SectionPicker.OnTouchingLetterChangedListener()```. It will give us a string containing the section that we are touching. We will use the string to find and scroll to the ```RecyclerView``` position of the chosen section.
 
 ## License
 ```
