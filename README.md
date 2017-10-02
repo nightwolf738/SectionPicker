@@ -112,7 +112,7 @@ public int getSectionForPosition(int position) {
 
 - ```getSectionForPosition(int position)``` returns section position in the list. We need to find the right section by using position parameter
 
-We can add SectionPicker in our xml layout like this:
+We can add ```SectionPicker``` in our xml layout like this:
 
 ```xml
 <com.ehamutcu.sectionpicker.SectionPicker
@@ -131,7 +131,7 @@ We can add SectionPicker in our xml layout like this:
 - ```textColor, textSize```: You can style text attributes with these
 - ```chosenColor, chosenStyle```: When you slide your finger on sections, the chosen one can be styled by these attributes
 
-Now we init the SectionPicker like this:
+Now we initialize the ```SectionPicker``` like this:
 
 ```java
 private void initSectionPicker() {
