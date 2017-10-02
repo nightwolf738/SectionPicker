@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.egemenhamutcu'
 
 ext {
     PUBLISH_GROUP_ID = 'com.ehamutcu.sectionpicker'
@@ -27,5 +30,3 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
-
-apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
