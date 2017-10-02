@@ -40,7 +40,7 @@ private List<CountriesRecyclerViewModel> countries;
 
 ```TYPE_COUNTRY``` and ```TYPE_LETTER``` are view types. You can see it in demo. 
 
-SectionIndexer will implement 3 methods: ```getSections(), getPositionForSection(int sectionIndex), getSectionForPosition(int position)```. We will need all of them:
+```SectionIndexer``` will implement 3 methods: ```getSections(), getPositionForSection(int sectionIndex), getSectionForPosition(int position)```. We will need all of them:
 
 ```java
 @Override
