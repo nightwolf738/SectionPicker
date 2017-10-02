@@ -155,4 +155,23 @@ private void initSectionPicker() {
 
 You may be confused of ```setTextViewIndicator(textViewSection)```. This method is optional. You can add any ```TextView``` to the ```SectionPicker```. It will show up when you slide your finger on sections. Please see demo.
 
-To bind ```SectionPicker``` and ```RecyclerView``` we get the section array from adapter, and call ```setSections(sections)``` in ```SectionPicker```. That's it.
+To bind ```SectionPicker``` and ```RecyclerView``` we get the section array from adapter, and call ```setSections(sections)``` in ```SectionPicker```.
+
+To enable fast scroll we need to implement ```SectionPicker.OnTouchingLetterChangedListener()```. It will give us a string containing the section that we are touching. We will use the string to find and scroll to the RecyclerView position of the chosen section.
+
+## License
+```
+Copyright 2017 Egemen Hamutçu
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
